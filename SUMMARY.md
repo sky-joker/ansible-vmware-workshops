@@ -1,4 +1,4 @@
 # Table of contents
 
-* [はじめに](README.md)
+* [目的](README.md)
 

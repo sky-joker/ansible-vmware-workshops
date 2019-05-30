@@ -1,7 +1,3 @@
-## はじめに
-
-はじめにを書く
-
-## 目的
+# VMware Automation Workshop with Ansible
 
 目的を書く
