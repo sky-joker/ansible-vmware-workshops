@@ -3,7 +3,7 @@
 ## オンプレに環境を準備する
 
 自宅または会社の環境にある物理サーバーにESXiをインストールしてvCenterを用意します。  
-検証用ESXi/vCenterのライセンスは [EVALExperience](https://www.vmug.com/vmug2019/membership/evalexperience) で購入することが可能です。  
+自宅で使える検証用ESXi/vCenterのライセンスは [EVALExperience](https://www.vmug.com/vmug2019/membership/evalexperience) で購入することが可能です。  
 ライセンス費用は `$200/年` 位です。
 
 ## vCenter and ESXi API based simulatorを使う
