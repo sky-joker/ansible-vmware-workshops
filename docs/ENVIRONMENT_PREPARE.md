@@ -25,31 +25,36 @@ ansibleで使われているシミュレーターはansibleプロジェクトで
 
 #### CentOS
 
-1. 必要なパッケージをインストールします。
+必要なパッケージをインストールします。
 
 ```
-# yum -y install epel-release && yum -y install git ansible
+yum -y install epel-release && yum -y install git ansible
 ```
 
 #### シミュレーターデプロイ
 
-1. [ansible-vmware-workshops](https://github.com/sky-joker/ansible-vmware-workshops) をクローンします。
+[ansible-vmware-workshops](https://github.com/sky-joker/ansible-vmware-workshops) をクローンします。
 
 ```
-# git clone https://github.com/sky-joker/ansible-vmware-workshops.git
+git clone https://github.com/sky-joker/ansible-vmware-workshops.git
 ```
 
-2. シミュレーターをデプロイします。
+シミュレーターをデプロイします。
 
 ```
-# cd ansible-vmware-workshops/provisioner/
-# ansible-playbook provision_lab.yml -i inventory -l localhost
+cd ansible-vmware-workshops/provisioner/
+ansible-playbook provision_lab.yml -i inventory -l localhost
 ```
 
-3. デプロイが完了したら動作確認をします。以下のコマンドを実行してサポートしているメソッド一覧を取得します。
+デプロイが完了したら以下のコマンドを実行して動作確認をします。
 
 ```
-# curl -sk https://user:pass@127.0.0.1/about
+curl -sk https://user:pass@127.0.0.1/about
+```
+
+上記のコマンドを実行するとサポートしているメソッド一覧が表示されます。
+
+```
 {
   "Methods": [
     "AcquireCloneTicket",
