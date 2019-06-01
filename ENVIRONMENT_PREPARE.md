@@ -1,1 +1,71 @@
 # 環境準備
+
+## オンプレに環境を準備する
+
+自宅または会社の環境にある物理サーバーにESXiをインストールしてvCenterを用意します。  
+検証用ESXi/vCenterのライセンスは [EVALExperience](https://www.vmug.com/vmug2019/membership/evalexperience) で購入することが可能です。  
+ライセンス費用は `$200/年` 位です。
+
+## vCenter and ESXi API based simulatorを使う
+
+自宅に潤沢なスペックのマシンが無かったり、ESXiやvCenterの準備が出来なかったりライセンスが無い場合はシミュレーターを使って演習が可能です。  
+ansibleで使われているシミュレーターはansibleプロジェクトで公開されています。
+
+{% embed url="https://github.com/ansible/vcenter-test-container" %}
+
+ちなみに、シミュレーターはGoで出来ていて以下のプロジェクトで開発されています。
+
+{% embed url="https://github.com/vmware/govmomi/tree/master/vcsim" %}
+
+ディストリビューションごとのシミュレーションデプロイ方法は以下を確認してください。
+
+{% hint style="warning" %}シミューレータは演習の全てをサポートしていないことをに注意してください。{% endhint %}
+
+### ローカル環境にシミュレーターをデプロイ
+
+#### CentOS
+
+1. 必要なパッケージをインストールします。
+
+```
+# yum -y install epel-release && yum -y install git ansible
+```
+
+#### シミュレーターデプロイ
+
+1. [ansible-vmware-workshops](https://github.com/sky-joker/ansible-vmware-workshops) をクローンします。
+
+```
+# git clone https://github.com/sky-joker/ansible-vmware-workshops.git
+```
+
+2. シミュレーターをデプロイします。
+
+```
+# cd ansible-vmware-workshops/provisioner/
+# ansible-playbook provision_lab.yml -i inventory -l localhost
+```
+
+3. デプロイが完了したら動作確認をします。以下のコマンドを実行してサポートしているメソッド一覧を取得します。
+
+```
+# curl -sk https://user:pass@127.0.0.1/about
+{
+  "Methods": [
+    "AcquireCloneTicket",
+    "AcquireGenericServiceTicket",
+    "AddAuthorizationRole",
+    "AddCustomFieldDef",
+    "AddDVPortgroup_Task",
+    "AddHost_Task",
+(nip)
+  "Types": [
+    "AuthorizationManager",
+    "ClusterComputeResource",
+    "ComputeResource",
+    "CustomFieldsManager",
+    "Datacenter",
+(snip)
+```
+
+シミュレーターでは、上記で表示されたメソッドのみサポートされます。
