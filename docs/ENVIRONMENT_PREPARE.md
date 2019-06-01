@@ -21,14 +21,28 @@ ansibleで使われているシミュレーターはansibleプロジェクトで
 
 {% hint style="warning" %}シミューレーターは演習の全てをサポートしていないことをに注意してください。{% endhint %}
 
-### ローカル環境にシミュレーターをデプロイ
+### ローカル環境にシミュレーターをデプロイ/削除
 
-#### CentOS
+#### CentOS7
 
 必要なパッケージをインストールします。
 
 ```
 yum -y install epel-release && yum -y install git ansible
+```
+
+#### RHEL7
+
+以下のリポジトリを有効化します。
+
+```
+subscription-manager repos --enable=rhel-7-server-ansible-2.8-rpms --enable=rhel-7-server-extras-rpms
+```
+
+必要なパッケージをインストールします。
+
+```
+yum -y install git ansible
 ```
 
 #### シミュレーターデプロイ
@@ -38,8 +52,7 @@ yum -y install epel-release && yum -y install git ansible
 ```
 git clone https://github.com/sky-joker/ansible-vmware-workshops.git
 ```
-
-シミュレーターをデプロイするために `provisioner` ディレクトリへ移動します。
+ シミュレーターをデプロイするために `provisioner` ディレクトリへ移動します。
 
 ```
 cd ansible-vmware-workshops/provisioner/
@@ -79,3 +92,11 @@ curl -sk https://user:pass@127.0.0.1/about
 ```
 
 シミュレーターでは、上記で表示されたメソッドのみサポートされます。
+
+#### シミュレーター削除
+
+ローカル環境のシミュレーターを削除します。
+
+```
+ansible-playbook teardown_lab.yml -i inventory -l localhost
+```
