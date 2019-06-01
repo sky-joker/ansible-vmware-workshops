@@ -39,10 +39,15 @@ yum -y install epel-release && yum -y install git ansible
 git clone https://github.com/sky-joker/ansible-vmware-workshops.git
 ```
 
-シミュレーターをデプロイします。
+シミュレーターをデプロイするために `provisioner` ディレクトリへ移動します。
 
 ```
 cd ansible-vmware-workshops/provisioner/
+```
+
+ローカル環境にシミュレーターをデプロイします。
+
+```
 ansible-playbook provision_lab.yml -i inventory -l localhost
 ```
 
