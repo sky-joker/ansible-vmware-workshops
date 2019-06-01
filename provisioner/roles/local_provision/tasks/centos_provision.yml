@@ -1,0 +1,33 @@
+---
+- name: install epel repo.
+  yum:
+    name: epel-release
+    state: latest
+
+- name: install required rpm packages.
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - docker
+      - git
+
+- name: install python pip.
+  easy_install:
+    name: pip
+    state: latest
+
+- name: install python docker-compose module.
+  pip:
+    name: docker-compose
+    state: latest
+
+- name: start docker daemon.
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: start vCenter Simulator playbook.
+  include_tasks: vcenter_simulator_provision.yml

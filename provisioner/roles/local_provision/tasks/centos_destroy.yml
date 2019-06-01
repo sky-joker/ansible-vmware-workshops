@@ -1,0 +1,11 @@
+---
+- name: delete vcsim container.
+  docker_container:
+    name: vcsim
+    state: absent
+
+- name: stop docker daemon.
+  systemd:
+    name: docker
+    state: stopped
+    enabled: no

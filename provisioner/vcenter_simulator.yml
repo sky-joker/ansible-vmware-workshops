@@ -1,0 +1,13 @@
+---
+- name: vCenter Simulator Playbook.
+  hosts: localhost
+  gather_facts: no
+  vars:
+    vcsim: 127.0.0.1
+    vcenter_hostname: 127.0.0.1
+    vcenter_username: user
+    vcenter_password: pass
+  roles:
+    - role: prepare_vmware_tests
+      when: state == "present"
+

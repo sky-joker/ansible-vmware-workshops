@@ -1,0 +1,11 @@
+---
+- name: Build a VMware automation learning environment.
+  hosts: all
+  gather_facts: yes
+  become: no
+  vars:
+    state: present
+  roles:
+    - role: local_provision
+      when: inventory_hostname == "localhost"
+

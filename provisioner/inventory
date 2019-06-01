@@ -1,0 +1,9 @@
+[localhost]
+localhost ansible_connection=local
+
+#[aws]
+#localhost ansible_connection=local
+
+#[aws:vars]
+#access_key=
+#secret_key=

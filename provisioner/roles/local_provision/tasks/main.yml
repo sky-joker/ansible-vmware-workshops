@@ -1,0 +1,8 @@
+---
+- name: Start provisioning on CentOS.
+  include_tasks: centos_provision.yml
+  when: state == "present" and ansible_facts.distribution == "CentOS"
+
+- name:
+  include_tasks: centos_destroy.yml
+  when: state == "absent" and ansible_facts.distribution == "CentOS"

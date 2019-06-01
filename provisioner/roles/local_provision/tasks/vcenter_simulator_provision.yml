@@ -1,0 +1,39 @@
+---
+- name: install python pyvmomi module.
+  pip:
+    name: pyvmomi
+    state: latest
+
+- name: clone from ansible repository.
+  git:
+    repo: "https://github.com/ansible/ansible.git"
+    dest: /tmp/ansible
+    clone: yes
+
+- name: copy prepare_vmware_tests role.
+  copy:
+    src: /tmp/ansible/test/integration/targets/prepare_vmware_tests
+    dest: "{{ playbook_dir }}/roles/"
+
+- name: delete ansible directory.
+  file:
+    path: /tmp/ansible
+    state: absent
+
+- name: start vcsim container.
+  docker_container:
+    name: vcsim
+    image: quay.io/ansible/vcenter-test-container
+    ports:
+      - "5000:5000"
+      - "443:443"
+      - "80:80"
+      - "8080:8080"
+      - "8989:8989"
+    restart: yes
+    restart_policy: always
+    state: started
+  when: ansible_facts.distribution == "CentOS"
+
+- name: start vCenter Simulator.
+  shell: "ansible-playbook {{ playbook_dir }}/vcenter_simulator.yml -e \"{'state':'present'}\""

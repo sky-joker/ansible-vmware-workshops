@@ -1,0 +1,10 @@
+---
+- name: Destroy a VMware automation learning environment.
+  hosts: all
+  gather_facts: yes
+  become: no
+  vars:
+    state: absent
+  roles:
+    - role: local_provision
+      when: inventory_hostname == "localhost"
