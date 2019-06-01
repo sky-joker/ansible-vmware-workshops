@@ -35,5 +35,13 @@
     state: started
   when: ansible_facts.distribution == "CentOS"
 
+- when: ansible_facts.distribution == "RedHat"
+  block:
+    - name: pull vcsim container image.
+      shell: podman pull quay.io/ansible/vcenter-test-container
+
+    - name: start vcsim container.
+      shell: podman run -d -it --name vcsim -p 5000:5000 -p 443:443 -p 80:80 -p 8080:8080 -p 8989:8989 quay.io/ansible/vcenter-test-container
+
 - name: start vCenter Simulator.
   shell: "ansible-playbook {{ playbook_dir }}/vcenter_simulator.yml -e \"{'state':'present'}\""

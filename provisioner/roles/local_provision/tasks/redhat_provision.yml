@@ -1,0 +1,22 @@
+---
+- name: install required rpm packages.
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - podman
+      - git
+
+- name: install python pip.
+  easy_install:
+    name: pip
+    state: latest
+
+#- name: install python docker-compose module.
+#  pip:
+#    name: docker-compose
+#    state: latest
+
+- name: start vCenter Simulator playbook.
+  include_tasks: vcenter_simulator_provision.yml

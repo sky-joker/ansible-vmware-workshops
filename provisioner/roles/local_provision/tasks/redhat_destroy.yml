@@ -1,0 +1,6 @@
+---
+- name: stop vcsim container.
+  shell: podman stop vcsim
+
+- name: delete vcsim container.
+  shell: podman rm vcsim

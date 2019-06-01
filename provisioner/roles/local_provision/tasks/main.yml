@@ -3,6 +3,14 @@
   include_tasks: centos_provision.yml
   when: state == "present" and ansible_facts.distribution == "CentOS"
 
-- name:
+- name: Destroy Lab from CentOS.
   include_tasks: centos_destroy.yml
   when: state == "absent" and ansible_facts.distribution == "CentOS"
+
+- name: Start provisioning on RHEL.
+  include_tasks: redhat_provision.yml
+  when: state == "present" and ansible_facts.distribution == "RedHat"
+
+- name: Destroy Lab from RHEL.
+  include_tasks: redhat_destroy.yml
+  when: state == "absent" and ansible_facts.distribution == "RedHat"
