@@ -1,0 +1,16 @@
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7-dev"
+
+services:
+  - docker
+
+install:
+  - pip install ansible ansible-lint
+
+script:
+  - ansible-lint provisioner/provision_lab.yml
+  - ansible-lint provisioner/teardown_lab.yml

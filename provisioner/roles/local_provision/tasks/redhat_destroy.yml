@@ -1,6 +1,14 @@
 ---
+- name: check vcsim container status.
+  shell: podman ps -f "name=vcsim" | wc -l
+  register: vcsim_container_status
+  when: state == "absent"
+
 - name: stop vcsim container.
-  shell: podman stop vcsim
+  command: podman stop vcsim
+  register: stop_vcsim_container_result
+  when: vcsim_container_status == "2"
 
 - name: delete vcsim container.
-  shell: podman rm vcsim
+  command: podman rm vcsim
+  when: stop_vcsim_container_result.rc == 0
