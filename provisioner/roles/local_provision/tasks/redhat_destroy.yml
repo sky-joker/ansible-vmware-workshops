@@ -1,6 +1,8 @@
 ---
 - name: check vcsim container status.
-  shell: podman ps -f "name=vcsim" | wc -l
+  shell: |
+    set -o pipefail
+    podman ps -f "name=vcsim" | wc -l
   register: vcsim_container_status
   when: state == "absent"
 
