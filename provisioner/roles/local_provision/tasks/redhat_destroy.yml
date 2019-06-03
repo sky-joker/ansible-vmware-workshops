@@ -9,8 +9,8 @@
 - name: stop vcsim container.
   command: podman stop vcsim
   register: stop_vcsim_container_result
-  when: vcsim_container_status == "2"
+  when: vcsim_container_status.stdout == "2"
 
 - name: delete vcsim container.
   command: podman rm vcsim
-  when: stop_vcsim_container_result.rc == 0
+  when: stop_vcsim_container_result.rc is defined and stop_vcsim_container_result.rc == 0
