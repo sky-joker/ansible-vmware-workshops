@@ -1,10 +1,28 @@
 # 環境準備
 
+環境はAnsibleをインストールするLinux、VMware ESXi、vCenter Serverを用意する必要があります。  
+現在サポートしているLinuxはCentOS/Red Hat Enterprise Linuxです。
+
 ## オンプレに環境を準備する
 
 自宅または会社の環境にある物理サーバーにESXiをインストールしてvCenterを用意します。  
 自宅で使える検証用ESXi/vCenterのライセンスは [EVALExperience](https://www.vmug.com/vmug2019/membership/evalexperience) で購入することが可能です。  
 ライセンス費用は `$200/年` 位です。
+
+環境構築後、Linuxに以下のコンテンツをクローンまたはダウンロードしてください。
+
+**クローンする場合**
+
+```
+git clone https://github.com/sky-joker/ansible-vmware-workshops.git
+```
+
+**ダウンロードする場合**
+
+```
+curl -L https://github.com/sky-joker/ansible-vmware-workshops/archive/master.zip -O
+unzip master.zip
+```
 
 ## vCenter and ESXi API based simulatorを使う
 
