@@ -1,6 +1,6 @@
 # VMware Automation Workshop with Ansible
 
-[![Build Status](https://travis-ci.org/sky-joker/ansible-vmware-workshops.svg?branch=master)](https://travis-ci.org/sky-joker/ansible-vmware-workshops)
+[![Build Status](https://travis-ci.org/sky-joker/ansible-vmware-workshops.svg?branch=master)](https://travis-ci.org/sky-joker/ansible-vmware-workshops) [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/sky-joker/ansible-vmware-workshops/blob/master/LICENSE.txt)
 
 VMware Automation Workshop with Ansibleでは、AnsibleでVMwareの環境を操作するための自主学習コンテンツを提供します。  
 学習コンテンツを進めるには `VMware ESXi` と `vCenter Server` が必要になります。  
