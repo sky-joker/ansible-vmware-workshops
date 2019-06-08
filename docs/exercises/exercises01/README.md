@@ -95,7 +95,7 @@ ansible localhost -m vmware_guest_facts -a "hostname=127.0.0.1 username=user pas
 ```
 
 同じ値が取得できたと思います。  
-このように `vmware_guest_facts` では、VM名またはuuidを指定して情報を取得できます
+このように `vmware_guest_facts` では、VM名またはuuidを指定して情報を取得できます。
 
 ## Step 2. VMの電源を操作する
 
