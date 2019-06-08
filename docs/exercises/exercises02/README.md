@@ -28,6 +28,7 @@ vi gather_vm_guests.yml
 
 ## Step 2. Inventoryを作成する
 
+Inventoryファイルを作成することで、Playbookを実行する複数ホストの指定やグルーピングをすることができます。  
 ここでは `inventory` というファイルを作成してみましょう。
 
 ```
