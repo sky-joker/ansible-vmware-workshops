@@ -1,0 +1,18 @@
+---
+- name: GATHER INFOMATION FROM VM GUEST
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: GATHER VM GUEST FACTS
+      vmware_guest_facts:
+        hostname: 127.0.0.1
+        username: user
+        password: pass
+        validate_certs: no
+        datacenter: DC0
+        name: DC0_H0_VM0
+      register: gather_vm_guest_facts_result
+
+    - debug: var=gather_vm_guest_facts_result
+
+    - debug: var=gather_vm_guest_facts_result.instance.hw_name
