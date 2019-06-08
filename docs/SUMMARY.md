@@ -7,3 +7,4 @@
     * [演習02](exercises/exercises02/README.md)
     * [演習03](exercises/exercises03/README.md)
     * [演習04](exercises/exercises04/README.md)
+    * [演習05](exercises/exercises05/README.md)

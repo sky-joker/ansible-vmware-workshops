@@ -1,0 +1,22 @@
+---
+- name: GENERATE REPORT FOR VMS
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: GATHER VM GUEST FACTS
+      vmware_guest_facts:
+        hostname: 127.0.0.1
+        username: user
+        password: pass
+        validate_certs: no
+        datacenter: DC0
+        name: "{{ item }}"
+      loop:
+        - DC0_H0_VM0
+        - DC0_H0_VM1
+      register: gather_vm_guest_facts_result
+
+    - name: GENERATE REPORT
+      template:
+        src: report_template_csv.j2
+        dest: vms_report.csv

@@ -1,0 +1,4 @@
+vmname,folder,vmtools_status,vmtools_version,cpu socket num,cpu core num,memory,powere,hw version,uuid,instanceuuid,
+{% for vm in gather_vm_guest_facts_result.results %}
+{{ vm.instance.hw_name}},{{ vm.instance.hw_folder }},{{ vm.instance.guest_tools_status }},{{ vm.instance.guest_tools_version }},{{ vm.instance.hw_cores_per_socket }},{{ vm.instance.hw_processor_count }},{{ vm.instance.hw_memtotal_mb }},{{ vm.instance.hw_power_status }},{{ vm.instance.hw_version }},{{ vm.instance.hw_product_uuid }},{{ vm.instance.instance_uuid }}
+{% endfor %}
