@@ -230,6 +230,35 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
+配列に入っている情報を取得する場合は以下のように要素番号を指定します。
+
+```yaml
+    - debug: var=gather_vm_guest_facts_result.instance.hw_files[0]
+```
+
+もう一度Playbookを実行します。
+
+```
+ansible-playbook gather_vm_guests.yml -i inventory
+```
+
+問題なく実行できれば、結果は以下のように表示されます。
+
+```
+PLAY [GATHER INFOMATION FROM VM GUEST] *********************************************************************************************************************
+
+TASK [GATHER VM GUEST FACTS] *******************************************************************************************************************************
+ok: [localhost]
+
+TASK [debug] ***********************************************************************************************************************************************
+ok: [localhost] => {
+    "gather_vm_guest_facts_result.instance.hw_files[0]": "[LocalDS_0] DC0_H0_VM0/DC0_H0_VM0.vmx"
+}
+
+PLAY RECAP *************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
 ## 完了
 
 お疲れ様でした。  
